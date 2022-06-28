@@ -1,5 +1,6 @@
-import { Component } from "@angular/core";
+import { Component, ViewChild } from "@angular/core";
 import { COURSES } from "../db-data";
+import { CourseCardComponent } from "./course-card/course-card.component";
 import { Course } from "./model/course";
 
 @Component({
@@ -9,9 +10,11 @@ import { Course } from "./model/course";
 })
 export class AppComponent {
   courses = COURSES;
- 
+
+  @ViewChild("cardRef")
+  card: CourseCardComponent;
 
   onCourseSelected(course: Course) {
-    console.log(course);
+    console.log(this.card);
   }
 }

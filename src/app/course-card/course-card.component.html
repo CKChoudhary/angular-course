@@ -1,6 +1,6 @@
 <ng-container *ngIf="course">
   <div class="course-card" [ngClass]="cardClasses()">
-    <div class="course-title">{{ cardIndex + ". " + course.description }}</div>
+    <div class="course-title">{{ cardIndex || '' + course.description }}</div>
     <img
       width="300"
       alt="Angular Logo"
@@ -20,7 +20,7 @@
         <div class="category" *ngSwitchCase="'BEGINNER'">Beginner</div>
         <div class="category" *ngSwitchCase="'INTERMEDIATE'">Intermediate</div>
         <div class="category" *ngSwitchCase="'ADVANCED'">Advanced</div>
-        <div class="category" *ngSwitchDefault="'All Levels'">Advanced</div>
+        <!-- <div class="category" *ngSwitchDefault="'All Levels'">Advanced</div> -->
       </div>
     </ng-container>
 
