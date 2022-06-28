@@ -8,12 +8,10 @@ import { Course } from "./model/course";
   styleUrls: ["./app.component.css"],
 })
 export class AppComponent {
-  coreCourse = COURSES[0];
-  rxJsCourse = COURSES[1];
-  ngRxCourse = COURSES[2];
+  courses = COURSES;
+ 
 
   onCourseSelected(course: Course) {
     console.log(course);
-    
   }
 }

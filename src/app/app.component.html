@@ -8,9 +8,7 @@
 
 <div class="courses">
 
- <course-card (courseSelected) = "onCourseSelected($event)"[course]="coreCourse"></course-card>
- <course-card (courseSelected) = "onCourseSelected($event)"[course]="rxJsCourse"></course-card>
- <course-card (courseSelected) = "onCourseSelected($event)"[course]="ngRxCourse"></course-card>
+ <course-card *ngFor="let course of courses" (courseSelected) = "onCourseSelected($event)"[course]="course"></course-card>
 
 </div>
 
