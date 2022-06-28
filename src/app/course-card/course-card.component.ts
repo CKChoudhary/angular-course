@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from "@angular/core";
+import { Component, Input, OnInit, EventEmitter, Output } from "@angular/core";
 import { Course } from "../model/course";
 
 @Component({
@@ -7,9 +7,17 @@ import { Course } from "../model/course";
   styleUrls: ["./course-card.component.css"],
 })
 export class CourseCardComponent implements OnInit {
-  constructor() {}
+  constructor() { }  
+
   @Input()
   course: Course;
+  
+  @Output()
+  courseSelected = new EventEmitter<Course>();
 
   ngOnInit(): void {}
+
+  onCourseViewed() {
+    this.courseSelected.emit(this.course);
+  }
 }
