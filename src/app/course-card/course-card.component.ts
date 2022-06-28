@@ -7,11 +7,14 @@ import { Course } from "../model/course";
   styleUrls: ["./course-card.component.css"],
 })
 export class CourseCardComponent implements OnInit {
-  constructor() { }  
+  constructor() {}
 
   @Input()
   course: Course;
-  
+
+  @Input()
+  cardIndex: number;
+
   @Output()
   courseSelected = new EventEmitter<Course>();
 
