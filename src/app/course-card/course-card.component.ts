@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, EventEmitter, Output } from "@angular/core";
+import { Component, Input, OnInit, EventEmitter, Output, ViewChild, AfterViewInit, ContentChild } from "@angular/core";
 import { Course } from "../model/course";
 
 @Component({
@@ -6,7 +6,7 @@ import { Course } from "../model/course";
   templateUrl: "./course-card.component.html",
   styleUrls: ["./course-card.component.css"],
 })
-export class CourseCardComponent implements OnInit {
+export class CourseCardComponent implements OnInit, AfterViewInit {
   constructor() {}
 
   @Input()
@@ -18,25 +18,31 @@ export class CourseCardComponent implements OnInit {
   @Output()
   courseSelected = new EventEmitter<Course>();
 
+  @ContentChild("courseImage")
+  image;
+
   ngOnInit(): void {}
 
   onCourseViewed() {
-    this.courseSelected.emit(this.course);
+    //this.courseSelected.emit(this.course);
+  }
+
+  ngAfterViewInit(): void {
+    console.log(this.image);
   }
 
   cardClasses() {
-    if (this.course.category == "BEGINNER")
-      return ['beginner']
-    
+    if (this.course.category == "BEGINNER") return ["beginner"];
+
     //or following syntax
 
     // return {
     //   'beginner': this.course.category == 'BEGINNER'
-     
+
     // }
   }
 
   cardStyles() {
-    return { "background-image": 'url('+ this.course.iconUrl + ')' };
+    return { "background-image": "url(" + this.course.iconUrl + ")" };
   }
 }

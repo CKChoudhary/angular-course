@@ -1,6 +1,6 @@
 <ng-container *ngIf="course">
   <div class="course-card" [ngClass]="cardClasses()">
-    <div class="course-title">{{ cardIndex || '' + course.description }}</div>
+    <div class="course-title">{{ cardIndex || "" + course.description }}</div>
     <!-- <img
       width="300"
       alt="Angular Logo"
@@ -8,11 +8,8 @@
       [src]="course.iconUrl"
     /> -->
 
-        <ng-content select=".course-image"> </ng-content>
-        <ng-content select=".course-description"> </ng-content>
-  
-
-   
+    <ng-content select="course-image"> </ng-content>
+    <ng-content select=".course-description"> </ng-content>
 
     <ng-container [ngSwitch]="course.category">
       <div class="course-category">
