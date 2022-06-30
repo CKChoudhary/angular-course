@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, EventEmitter, Output, ViewChild, AfterViewInit, ContentChild, ContentChildren, AfterContentInit, QueryList } from "@angular/core";
+import { Component, Input, OnInit, EventEmitter, Output, ViewChild, AfterViewInit, ContentChild, ContentChildren, AfterContentInit, QueryList, TemplateRef } from "@angular/core";
 import { CourseImageComponent } from "../course-image/course-image.component";
 import { Course } from "../model/course";
 
@@ -7,7 +7,9 @@ import { Course } from "../model/course";
   templateUrl: "./course-card.component.html",
   styleUrls: ["./course-card.component.css"],
 })
-export class CourseCardComponent implements OnInit, AfterViewInit, AfterContentInit {
+export class CourseCardComponent
+  implements OnInit, AfterViewInit, AfterContentInit
+{
   constructor() {}
   ngAfterContentInit(): void {
     console.log(this.images);
@@ -15,6 +17,9 @@ export class CourseCardComponent implements OnInit, AfterViewInit, AfterContentI
 
   @Input()
   course: Course;
+
+  @Input()
+  noImageTpl: TemplateRef<any>;
 
   @Input()
   cardIndex: number;
@@ -31,9 +36,7 @@ export class CourseCardComponent implements OnInit, AfterViewInit, AfterContentI
     //this.courseSelected.emit(this.course);
   }
 
-  ngAfterViewInit(): void {
-   
-  }
+  ngAfterViewInit(): void {}
 
   cardClasses() {
     if (this.course.category == "BEGINNER") return ["beginner"];
