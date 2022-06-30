@@ -14,13 +14,21 @@
 
 </div> -->
 
-<ng-content></ng-content>
-
 <div class="courses" *ngIf="courses[0] as course">
+  <ng-template #blankImage let-courseName="description">
+    <p class="warn">{{ courseName }} has no image yet.</p>
+    <img src="/assets/empty-image.png" />
+  </ng-template>
+  <hr />
+
+  <div
+    *ngTemplateOutlet="blankImage; context: { description: course.description }"
+  ></div>
+
+  <hr />
+
   <course-card (courseSelected)="onCourseSelected($event)" [course]="course">
-<course-image [src]="course.iconUrl"></course-image>
-<course-image [src]="courses[1].iconUrl"></course-image>
-<course-image [src]="courses[2].iconUrl"></course-image>
+    <course-image [src]="course.iconUrl"></course-image>
 
     <div class="course-description">
       {{ course.longDescription }}
