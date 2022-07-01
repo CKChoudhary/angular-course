@@ -4,29 +4,24 @@ import {Course} from './model/course';
 import {CourseCardComponent} from './course-card/course-card.component';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  selector: "app-root",
+  templateUrl: "./app.component.html",
+  styleUrls: ["./app.component.css"],
 })
 export class AppComponent implements AfterViewInit {
+  courses = COURSES;
 
-    courses = COURSES;
+  @ViewChildren(CourseCardComponent, { read: ElementRef })
+  cards: QueryList<ElementRef>;
 
+  constructor() {}
 
-    @ViewChildren(CourseCardComponent, {read: ElementRef})
-    cards : QueryList<ElementRef>;
+  ngAfterViewInit() {}
 
+  onCourseSelected(course: Course) {}
 
-    constructor() {
-
-    }
-
-    ngAfterViewInit() {
-
-    }
-
-    onCourseSelected(course:Course) {
-
-    }
-
+  onToggle(isHighlighted) {
+    console.log(isHighlighted);
+    
+  }
 }
