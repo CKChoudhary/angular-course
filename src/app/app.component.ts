@@ -5,6 +5,7 @@ import {CourseCardComponent} from './course-card/course-card.component';
 import {HighlightedDirective} from './directives/highlighted.directive';
 import {Observable} from 'rxjs';
 import { HttpClient, HttpParams } from '@angular/common/http';
+import { CoursesService } from './services/courses.service';
 
 @Component({
   selector: 'app-root',
@@ -15,14 +16,19 @@ export class AppComponent implements OnInit {
 
   courses$: Observable<Course[]>;
 
-  constructor(private http: HttpClient) {
+  constructor(private coursesService: CoursesService) {
 
   }
 
   ngOnInit() {
-    const params= new HttpParams().set("page","1").set("pageSize","10")
+    console.log(this.coursesService);
+   
+    this.courses$ = this.coursesService.loadCourses();
+  }
 
-    this.courses$ = this.http.get<Course[]>("/api/courses", { params });
+  save(course: Course) {
+    this.coursesService.saveCourse(course)
+      .subscribe(x =>console.log("saved"));
   }
 
 
