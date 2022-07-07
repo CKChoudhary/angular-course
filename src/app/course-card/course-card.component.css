@@ -46,4 +46,7 @@
   user-select: none;
 }
 
+ :host-context(.salmon-theme) .course-card{
+    background: lightsalmon;
+}
 
